@@ -1,0 +1,24 @@
+{
+	"genericName": "Servants",
+	"specificName": {
+		"athen": "Douloi",
+		"mace": "Douloi",
+		"ptol": "Douloi",
+		"sele": "Douloi",
+		"spart": "Douloi"
+	},
+	"description": "Hire servants to help quarry stone. Increases stone gathering rates.",
+	"cost": {
+		"food": 0,
+		"stone": 0
+	},
+	"requirements": { "tech": "phase_village" },
+	"icon": "mining_stone_01.png",
+	"researchTime": 5,
+	"tooltip": "Workers +75% stone gather rate.",
+	"modifications": [
+		{ "value": "ResourceGatherer/Rates/stone.rock", "multiply": 1.75 }
+	],
+	"affects": ["Worker"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}
