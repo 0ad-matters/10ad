@@ -11,16 +11,16 @@
 	},
 	"description": "Home gardens ranged from simple fenced-in areas to large manicured and colonnaded enclosures.",
 	"cost": {
-		"wood": 300,
-		"stone": 100
+		"wood": 0,
+		"stone": 0
 	},
-	"requirements": { "tech": "phase_town" },
+	"requirements": { "tech": "phase_village" },
 	"requirementsTooltip": "Unlocked in Town Phase.",
 	"icon": "population.png",
-	"researchTime": 40,
-	"tooltip": "Houses +20% population bonus.",
+	"researchTime": 5,
+	"tooltip": "Houses +80% population bonus.",
 	"modifications": [
-		{ "value": "Population/Bonus", "multiply": 1.2 }
+		{ "value": "Population/Bonus", "multiply": 1.8 }
 	],
 	"affects": ["House"],
 	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
