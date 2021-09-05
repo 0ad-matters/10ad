@@ -15,9 +15,9 @@
 	"requirements": { "tech": "phase_village" },
 	"icon": "mining_stone_01.png",
 	"researchTime": 5,
-	"tooltip": "Workers +75% stone gather rate.",
+	"tooltip": "Workers +95% stone gather rate.",
 	"modifications": [
-		{ "value": "ResourceGatherer/Rates/stone.rock", "multiply": 1.75 }
+		{ "value": "ResourceGatherer/Rates/stone.rock", "multiply": 1.95 }
 	],
 	"affects": ["Worker"],
 	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"

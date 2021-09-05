@@ -8,9 +8,9 @@
 	"requirements": { "tech": "phase_village" },
 	"icon": "mining_metal_01.png",
 	"researchTime": 5,
-	"tooltip": "Workers +75% metal gather rate.",
+	"tooltip": "Workers +95% metal gather rate.",
 	"modifications": [
-		{ "value": "ResourceGatherer/Rates/metal.ore", "multiply": 1.75 }
+		{ "value": "ResourceGatherer/Rates/metal.ore", "multiply": 1.95 }
 	],
 	"affects": ["Worker"],
 	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
