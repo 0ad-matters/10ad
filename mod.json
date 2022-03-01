@@ -1,12 +1,12 @@
 {
 	"name": "10ad",
-	"version": "0.25.0",
+	"version": "0.26.0",
 	"label": "10 A.D. Empires Ascendant",
 	"description": "Fast economy upgrades and fewer houses required",
 	"dependencies": [
-		"0ad<=0.0.25"
+		"0ad=0.0.26"
 	],
-	"url": "https://github.com/andy5995/10ad",
+	"url": "https://github.com/0ad-matters/10ad",
 	"author_name": "Andy Alt",
 	"author_profile": "https://github.com/andy5995"
 }
