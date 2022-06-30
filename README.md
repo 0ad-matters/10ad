@@ -1,8 +1,7 @@
 # 10ad
 
-Mod for [0ad](https://play0ad.com/); faster (and cheaper) economy
-upgrades and fewer houses required.
-
+Mod for [0ad](https://play0ad.com/); Increased capacity and gather
+rates are the default, and fewer houses are required.
 
 ## Details
 
