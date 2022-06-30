@@ -36,6 +36,7 @@ ResourceGatherer.prototype.Schema =
  * so always gather integer amount.
  */
 ResourceGatherer.prototype.GATHER_AMOUNT = 1;
+ResourceGatherer.prototype.INCREASE_CAPACITY = 15;
 
 ResourceGatherer.prototype.Init = function()
 {
@@ -159,7 +160,7 @@ ResourceGatherer.prototype.GetCapacity = function(resourceType)
 {
 	if (!this.template.Capacities[resourceType])
 		return 0;
-	return this.capacities[resourceType];
+	return this.capacities[resourceType] + this.INCREASE_CAPACITY;
 };
 
 ResourceGatherer.prototype.GetRange = function()
@@ -311,7 +312,15 @@ ResourceGatherer.prototype.GetTargetGatherRate = function(target)
 	if (diminishingReturns)
 		rate *= diminishingReturns;
 
-	return rate;
+	var _10ad_multiplier = 1;
+	if (type.specific == "grain")
+		_10ad_multiplier = 1.75;
+	else if (type.generic == "stone" || type.generic == "metal" || type.generic == "wood")
+		_10ad_multiplier = 1.95;
+	else if (type.specific == "fruit")
+		_10ad_multiplier = 1.5;
+
+	return rate * _10ad_multiplier;
 };
 
 /**

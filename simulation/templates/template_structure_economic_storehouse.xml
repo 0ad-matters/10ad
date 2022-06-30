@@ -37,14 +37,7 @@
   </Obstruction>
   <ProductionQueue/>
   <RallyPoint disable=""/>
-  <Researcher>
-    <Technologies datatype="tokens">
-      gather_lumbering_ironaxes
-      gather_mining_servants
-      gather_mining_wedgemallet
-      gather_capacity_basket
-    </Technologies>
-  </Researcher>
+  <Researcher/>
   <ResourceDropsite>
     <Types>wood stone metal</Types>
     <Sharable>true</Sharable>
