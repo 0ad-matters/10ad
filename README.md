@@ -9,10 +9,9 @@ These upgrades are all free and very fast to complete.
 
 ### Storehouse and Farmhouse
 
-You can do the upgrades immediately after building them. There is only
-one upgrade for each resource, but it increases your gathering rate to
-the same value you'd get after doing the village, town, and city
-upgrade in the unmodded version of 0ad.
+Increased capacity and gather rates are the default, and there are
+almost no eco upgrades available (Some civs, such as Gauls, still
+offer an additional upgrade).
 
 ### Housing
 
