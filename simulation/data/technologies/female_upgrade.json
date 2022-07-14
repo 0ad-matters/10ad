@@ -1,0 +1,31 @@
+{
+	"genericName": "Female Upgrade",
+	"specificName": {
+		"athen": "Xiphos",
+		"mace": "Xiphos",
+		"ptol": "Xiphos",
+		"rome": "Pugio",
+		"sele": "Xiphos",
+		"spart": "Xiphos"
+	},
+	"description": "Often, a soldier would carry a secondary weapon in addition to his primary weapon of choice, to be drawn when the primary weapon has failed or been broken.",
+	"cost": {
+		"food": 500,
+		"metal": 500,
+		"stone": 500
+	},
+	"requirements": { "tech": "phase_city" },
+	"requirementsTooltip": "Unlocked in City Phase.",
+	"icon": "sword_01.png",
+	"researchTime": 40,
+	"tooltip": "Female Upgrade health, attack, walk speed, resistance.",
+	"modifications": [
+		{ "value": "Health/Max", "multiply": 6 },
+		{ "value": "Attack/Melee/Damage/Hack", "multiply": 3.15 },
+		{ "value": "Resistance/Entity/Damage/Hack", "add": 2 },
+		{ "value": "Resistance/Entity/Damage/Pierce", "add": 2 },
+		{ "value": "UnitMotion/WalkSpeed", "multiply": 1.1 }
+	],
+	"affects": ["FemaleCitizen"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}
