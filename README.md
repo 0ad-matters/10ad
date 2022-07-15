@@ -1,7 +1,8 @@
 # 10ad
 
 Mod for [0ad](https://play0ad.com/); Increased capacity and gather
-rates are the default, and fewer houses are required.
+rates are the default, free and fast town/city phase upgrades, and
+fewer houses are required.
 
 ## Details
 
@@ -12,6 +13,10 @@ These upgrades are all free and very fast to complete.
 Increased capacity and gather rates are the default, and there are
 almost no eco upgrades available (Some civs, such as Gauls, still
 offer an additional upgrade).
+
+### Town and City phase upgrades
+
+They are FAST and free.
 
 ### Housing
 
