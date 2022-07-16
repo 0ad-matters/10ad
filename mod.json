@@ -1,6 +1,6 @@
 {
 	"name": "10ad",
-	"version": "0.26.1",
+	"version": "0.26.2",
 	"label": "10 A.D. Empires Ascendant",
 	"description": "Increased capacity and gather rates, and fewer houses required",
 	"dependencies": [
