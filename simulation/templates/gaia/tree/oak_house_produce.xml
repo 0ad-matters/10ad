@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_gaia_tree">
+  <Cost>
+    <Population>0</Population>
+    <BuildTime>60</BuildTime>
+    <Resources>
+      <wood>100</wood>
+    </Resources>
+  </Cost>
+  <Health>
+    <DeathType>corpse</DeathType>
+    <Max>100</Max>
+    <RegenRate>0</RegenRate>
+    <IdleRegenRate>0</IdleRegenRate>
+    <Unhealable>true</Unhealable>
+  </Health>
+  <Identity>
+    <SpecificName>Oak</SpecificName>
+    <Tooltip>Plant a tree.</Tooltip>
+    <RequiredTechnology>phase_city</RequiredTechnology>
+  </Identity>
+  <Loot>
+    <xp>15</xp>
+  </Loot>
+  <ResourceSupply>
+    <Max>200</Max>
+  </ResourceSupply>
+  <UnitMotion>
+    <FormationController>false</FormationController>
+    <PassabilityClass>default</PassabilityClass>
+    <WalkSpeed>0.1</WalkSpeed>
+    <RunMultiplier>1</RunMultiplier>
+    <InstantTurnAngle>1</InstantTurnAngle>
+    <Acceleration>1</Acceleration>
+    <Weight>1</Weight>
+  </UnitMotion>
+  <VisualActor>
+    <Actor>flora/trees/oak.xml</Actor>
+  </VisualActor>
+</Entity>

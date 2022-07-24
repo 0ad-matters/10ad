@@ -63,6 +63,7 @@
   <Trainer>
     <Entities datatype="tokens">
       units/{civ}/support_female_citizen_house
+      gaia/tree/oak_house_produce
     </Entities>
   </Trainer>
   <Vision>
