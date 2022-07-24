@@ -4,20 +4,15 @@
     <Population>0</Population>
     <BuildTime>60</BuildTime>
     <Resources>
-      <wood>100</wood>
+      <food>200</food>
     </Resources>
   </Cost>
-  <Health>
-    <DeathType>corpse</DeathType>
-    <Max>100</Max>
-    <RegenRate>0</RegenRate>
-    <IdleRegenRate>0</IdleRegenRate>
-    <Unhealable>true</Unhealable>
-  </Health>
+  <Health disable=""/>
+  <Resistance replace=""/>
   <Identity>
     <SpecificName>Oak</SpecificName>
     <Tooltip>Plant a tree.</Tooltip>
-    <RequiredTechnology>phase_city</RequiredTechnology>
+    <RequiredTechnology>phase_town</RequiredTechnology>
   </Identity>
   <Loot>
     <xp>15</xp>
@@ -28,7 +23,7 @@
   <UnitMotion>
     <FormationController>false</FormationController>
     <PassabilityClass>default</PassabilityClass>
-    <WalkSpeed>0.1</WalkSpeed>
+    <WalkSpeed>0.001</WalkSpeed>
     <RunMultiplier>1</RunMultiplier>
     <InstantTurnAngle>1</InstantTurnAngle>
     <Acceleration>1</Acceleration>
