@@ -11,12 +11,46 @@ function PreInitGame()
 	Engine.BroadcastMessage(MT_SkirmishReplace, {});
 	Engine.FlushDestroyedEntities();
 
-	let numPlayers = Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager).GetNumPlayers();
+	const cmpPlayerManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager);
+  if (!cmpPlayerManager)
+		return;
+
+	let numPlayers = cmpPlayerManager.GetNumPlayers();
 	for (let i = 1; i < numPlayers; ++i) // ignore gaia
 	{
 		let cmpTechnologyManager = QueryPlayerIDInterface(i, IID_TechnologyManager);
-		if (cmpTechnologyManager)
-			cmpTechnologyManager.UpdateAutoResearch();
+		if (!cmpTechnologyManager)
+			continue;
+
+		cmpTechnologyManager.UpdateAutoResearch();
+
+		const civ = QueryPlayerIDInterface(i, IID_Identity).GetCiv();
+		let cmpTemplateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
+		let research10adTechs = cmpTemplateManager.GetTemplateWithoutValidation("structures/" + civ + "/storehouse").Researcher.Technologies._string.split(" ");
+		research10adTechs.push.apply(research10adTechs, cmpTemplateManager.GetTemplateWithoutValidation("structures/" + civ + "/farmstead").Researcher.Technologies._string.split(" "));
+
+		for (let tech of research10adTechs)
+		{
+			const template = TechnologyTemplates.Get(tech);
+			let tReq = template.requirements.all;
+			let tAny = [];
+
+			if (tReq) {
+				if (tReq.some(r => {
+					if (r.any)
+						tAny = r.any
+					if (r.civ)
+						return r.civ != civ;
+					return r.notciv === civ;
+				})) continue;
+				if (tAny) {
+					if (tAny.some(r => {
+						return r.civ != civ;
+					})) continue;
+				}
+			}
+			cmpTechnologyManager.ResearchTechnology(tech);
+		}
 	}
 
 	// Explore the map inside the players' territory borders
