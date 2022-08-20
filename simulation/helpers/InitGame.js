@@ -26,12 +26,20 @@ function PreInitGame()
 
 		const civ = QueryPlayerIDInterface(i, IID_Identity).GetCiv();
 		let cmpTemplateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
-		let research10adTechs = cmpTemplateManager.GetTemplateWithoutValidation("structures/" + civ + "/storehouse").Researcher.Technologies._string.split(" ");
-		research10adTechs.push.apply(research10adTechs, cmpTemplateManager.GetTemplateWithoutValidation("structures/" + civ + "/farmstead").Researcher.Technologies._string.split(" "));
+
+		// The upgrades from all these will be researched
+		const structure = ["storehouse", "farmstead", "house"];
+		let research10adTechs = [];
+
+		for (let s = 0; s < structure.length; s++)
+			research10adTechs.push(...cmpTemplateManager.GetTemplateWithoutValidation("structures/" + civ + "/" + structure[s]).Researcher.Technologies._string.split(" "));
 
 		for (let tech of research10adTechs)
 		{
 			const template = TechnologyTemplates.Get(tech);
+
+			// Some civs do not get the same upgrades. Requirements are specified
+			// in the templates
 			let tReq = template.requirements.all;
 			let tAny = [];
 

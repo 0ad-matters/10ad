@@ -1,3 +1,11 @@
+2022-08-28
+
+  * Fix rice upgrade for Han
+  * Research upgrades instead of hard-coding values
+  + All the house upgrades are now researched at game start
+  * The house can now only garrison the same amount of women as in regular 0ad
+  * release v0.26.4
+
 2022-07-18
 
   * athen and pers:free and fast town/city phase upgrade
