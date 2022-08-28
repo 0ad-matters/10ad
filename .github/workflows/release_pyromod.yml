@@ -1,0 +1,30 @@
+name: Release Pyromod
+
+on:
+  push:
+    tags:
+      - v**
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build pyromod
+      run: |
+        MOD_VERSION="$(jq .version mod.json | tr -d \")"
+        MOD_NAME="$(jq .name mod.json | tr -d \")"
+        zip -r ${HOME}/${MOD_NAME}-${MOD_VERSION}.zip . -x .git\*
+        mv ${HOME}/${MOD_NAME}*.zip $PWD
+        cp ${MOD_NAME}-${MOD_VERSION}.zip ${MOD_NAME}-${MOD_VERSION}.pyromod
+    - name: Deploy PyroMod
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: True
+        prerelease: False
+        artifacts: "10ad*.*"
+        token: ${{ secrets.GITHUB_TOKEN }}
+        omitNameDuringUpdate: True
+        omitBodyDuringUpdate: True
+    - name: remove artifacts
+      run: rm 10ad*.*
