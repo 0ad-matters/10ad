@@ -11,10 +11,10 @@ function PreInitGame()
 	Engine.BroadcastMessage(MT_SkirmishReplace, {});
 	Engine.FlushDestroyedEntities();
 
-	let numPlayers = Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager).GetNumPlayers();
+	const numPlayers = Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager).GetNumPlayers();
 	for (let i = 1; i < numPlayers; ++i) // ignore gaia
 	{
-		let cmpTechnologyManager = QueryPlayerIDInterface(i, IID_TechnologyManager);
+		const cmpTechnologyManager = QueryPlayerIDInterface(i, IID_TechnologyManager);
 		if (cmpTechnologyManager)
 			cmpTechnologyManager.UpdateAutoResearch();
 
@@ -58,7 +58,7 @@ function PreInitGame()
 	}
 
 	// Explore the map inside the players' territory borders
-	let cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
+	const cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
 	cmpRangeManager.ExploreTerritories();
 }
 
@@ -74,7 +74,7 @@ function InitGame(settings)
 
 	if (settings.ExploreMap)
 	{
-		let cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
+		const cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
 		for (let i = 1; i < settings.PlayerData.length; ++i)
 			cmpRangeManager.ExploreMap(i);
 	}
@@ -83,22 +83,41 @@ function InitGame(settings)
 	for (let i = 0; i < settings.PlayerData.length; ++i)
 	{
 		const cmpPlayer = QueryPlayerIDInterface(i);
-		cmpPlayer.SetCheatsEnabled(!!settings.CheatsEnabled);
 
-		if (settings.PlayerData[i] && !!settings.PlayerData[i].AI)
+		if (settings.PlayerData[i])
 		{
-			cmpAIManager.AddPlayer(settings.PlayerData[i].AI, i, +settings.PlayerData[i].AIDiff, settings.PlayerData[i].AIBehavior || "random");
-			cmpPlayer.SetAI(true);
+			if (settings.PlayerData[i].Removed)
+			{
+				cmpPlayer.Defeat(undefined);
+				continue;
+			}
+			else if (settings.PlayerData[i].AI)
+			{
+				cmpAIManager.AddPlayer(settings.PlayerData[i].AI, i, +settings.PlayerData[i].AIDiff, settings.PlayerData[i].AIBehavior || "random");
+				cmpPlayer.SetAI(true);
+			}
 		}
-
-		if (settings.PopulationCap)
-			cmpPlayer.SetMaxPopulation(settings.PopulationCap);
 
 		if (settings.AllyView)
 			Engine.QueryInterface(cmpPlayer.entity, IID_TechnologyManager)?.ResearchTechnology(Engine.QueryInterface(cmpPlayer.entity, IID_Diplomacy).template.SharedLosTech);
 	}
-	if (settings.WorldPopulationCap)
-		Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager).SetMaxWorldPopulation(settings.WorldPopulationCap);
+
+	{
+		const popCap = settings.PopulationCap || 300;
+		const cmpPopulationCapManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_PopulationCapManager);
+		const nonGaiaPlayers = settings.PlayerData.slice(1);
+		if (nonGaiaPlayers.some(player => player.PopulationLimit))
+			cmpPopulationCapManager.SetPerPlayerPopulationCaps(nonGaiaPlayers.map(player => player.PopulationLimit || popCap));
+		else
+		{
+			if ([cmpPopulationCapManager.CAPTYPE_PLAYER_POPULATION, cmpPopulationCapManager.CAPTYPE_TEAM_POPULATION,
+				cmpPopulationCapManager.CAPTYPE_WORLD_POPULATION].includes(settings.PopulationCapType))
+				cmpPopulationCapManager.SetPopulationCapType(settings.PopulationCapType);
+			else
+				cmpPopulationCapManager.SetPopulationCapType(cmpPopulationCapManager.CAPTYPE_PLAYER_POPULATION);
+			cmpPopulationCapManager.SetPopulationCap(popCap);
+		}
+	}
 
 	// Update the grid with all entities created for the map init.
 	Engine.QueryInterface(SYSTEM_ENTITY, IID_Pathfinder).UpdateGrid();

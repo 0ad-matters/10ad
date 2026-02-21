@@ -1,10 +1,10 @@
 {
 	"name": "10ad",
-	"version": "0.27.1",
-	"label": "10 A.D. Empires Ascendant",
+	"version": "0.28.0",
+	"label": "10 A.D.",
 	"description": "Increased capacity and gather rates, and fewer houses required",
 	"dependencies": [
-		"0ad=0.27.0"
+		"0ad=0.28.0"
 	],
 	"url": "https://github.com/0ad-matters/10ad",
 	"author_name": "Andy Alt",

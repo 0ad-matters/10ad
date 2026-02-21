@@ -1,9 +1,16 @@
 {
 	"genericName": "City Phase",
 	"specificName": {
+		"brit": "Dūnon",
+		"cart": "Qart",
+		"gaul": "Dūnon",
 		"han": "Jùn",
+		"iber": "Iltir",
+		"kush": "Ri",
 		"mace": "Megalopolis",
+		"maur": "Pura",
 		"ptol": "Megalopolis",
+		"rome": "Urbs",
 		"sele": "Megalopolis",
 		"spart": "Megalopolis"
 	},
@@ -23,10 +30,11 @@
 	"replaces": ["phase_city"],
 	"icon": "city_phase.png",
 	"researchTime": 1,
-	"tooltip": "Advance to City Phase, which unlocks more entities and technologies. Civic Centers +50% territory influence radius. Structures +9 capture points regeneration rate per garrisoned unit.",
+	"tooltip": "Advance to City Phase, which unlocks more entities and technologies. Civic Centers +25% territory influence radius. Structures +20% damage and +1 capture points regeneration rate for garrisoned units.",
 	"modifications": [
-		{ "value": "Capturable/GarrisonRegenRate", "add": 9, "affects": "Structure" },
-		{ "value": "TerritoryInfluence/Radius", "multiply": 1.5, "affects": "CivCentre" }
+		{ "value": "Capturable/GarrisonRegenRate", "add": 1, "affects": "Structure" },
+		{ "value": "Attack/Ranged/Damage/Pierce", "multiply": 1.2, "affects": "Structure" },
+		{ "value": "TerritoryInfluence/Radius", "multiply": 1.25, "affects": "CivCentre" }
 	],
 	"soundComplete": "interface/alarm/alarm_phase.xml"
 }
